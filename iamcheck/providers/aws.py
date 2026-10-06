@@ -228,6 +228,10 @@ class AWSProvider(BaseProvider):
 
     @staticmethod
     def _password_activity(entity: IAMEntity, row: dict[str, str]) -> None:
+        enabled = row.get("password_enabled")
+        entity.console_password_enabled = (
+            enabled == "true" if enabled in {"true", "false"} else None
+        )
         value = row.get("password_last_used", "N/A")
         if row.get("password_enabled") == "true":
             used = None
