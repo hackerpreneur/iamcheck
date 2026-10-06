@@ -63,6 +63,7 @@ class IAMEntity:
     trust_policy: PolicyDocument | None = None
     mfa_enabled: bool | None = None
     hardware_mfa_enabled: bool | None = None
+    console_password_enabled: bool | None = None
     credential_last_used: dict[str, datetime | None] = field(default_factory=dict)
 
 
